@@ -68,7 +68,7 @@ img {
 .custom-controls {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 160px;
   margin-bottom: 20px;
   flex-wrap: wrap;
 }
@@ -93,7 +93,7 @@ img {
 .arrow-nav {
   display: flex;
   justify-content: space-around;
-  margin: 20px 0;
+  margin: 40px 0;
 }
 
 .arrow-nav button {
@@ -104,6 +104,10 @@ img {
   width: 40px;
   height: 40px;
   background: #FB5 url('../img/arrow.svg') center center no-repeat;
+}
+
+button:focus {
+  outline: 0;
 }
 
 .arrow-nav button.prev {
