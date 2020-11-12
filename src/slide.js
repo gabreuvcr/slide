@@ -9,6 +9,16 @@ export default class Slide {
     }
   }
 
+  moveSlide(distX) {
+    this.dist.movePosition = distX;
+    this.slide.style.transform = `translate3d(${distX}px, 0px, 0px)`;
+  }
+
+  updatePosition(clientX) {
+    this.dist.movement = (this.dist.startX - clientX) * 1.6;
+    return this.dist.finalPosition - this.dist.movement;
+  }
+
   onStart(event) {
     event.preventDefault();
     this.dist.startX = event.clientX;
@@ -16,11 +26,13 @@ export default class Slide {
   }
 
   onMove(event) {
-    console.log(this.dist.startX - event.clientX);
+    const finalPosition = this.updatePosition(event.clientX);
+    this.moveSlide(finalPosition);
   }
 
   onEnd(event) {
     this.wrapper.removeEventListener('mousemove', this.onMove);
+    this.dist.finalPosition = this.dist.movePosition;
   }
 
   addSlideEvents() {
